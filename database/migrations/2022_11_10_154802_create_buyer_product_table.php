@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('buyer_product', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('buyer_id');
+            $table->foreignId('product_id');
+            $table->primary(['buyer_id','product_id']);
+
+            $table->foreign('buyer_id')->referenced('id')->on('buyers');
+
+            $table->foreign('product_id')->referenced('id')->on('products');
+
             $table->timestamps();
         });
     }
