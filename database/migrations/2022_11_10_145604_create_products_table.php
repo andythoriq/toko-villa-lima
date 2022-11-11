@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('nama')->unique();
+            $table->string('slug')->unique();
+            $table->string('jenis')->unique()->nullable();
+            $table->integer('jumlah');
+            $table->integer('harga');
+            $table->integer('beratDalamGram');
             $table->timestamps();
         });
     }

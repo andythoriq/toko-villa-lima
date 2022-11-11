@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageController::class, 'beranda'])->name('beranda');
+Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/saran', function(){
+    return "halaman saran belum dibuat";
+})->name('saran');
