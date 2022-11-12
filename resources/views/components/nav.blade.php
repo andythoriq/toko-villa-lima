@@ -9,7 +9,7 @@
             <a class="nav-link{{ $activate == 'Beranda' ? ' active fw-bolder' : '' }}" href=" / ">Beranda</a>
             <a class="nav-link{{ $activate == 'Gallery' ? ' active fw-bolder' : '' }}" href=" /gallery ">Gallery</a>
             <a class="nav-link{{ $activate == 'Contact' ? ' active fw-bolder' : '' }}" href=" /contact ">Contact</a>
-            <a class="nav-link disabled" href="{{ route('saran') }}">Kritik/Saran</a>
+            <a class="nav-link disabled" href="{{ route('saran') }}">Saran</a>
         </div>
         </div>
     </div>

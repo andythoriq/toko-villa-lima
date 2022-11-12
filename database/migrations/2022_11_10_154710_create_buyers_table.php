@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('buyers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('human_id');
+            $table->string('nama')->nullable();
+            $table->string('alamat');
         });
     }
 

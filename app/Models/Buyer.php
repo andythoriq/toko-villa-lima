@@ -11,10 +11,10 @@ class Buyer extends Model
 {
     use HasFactory;
 
-    public function human()
-    {
-        return $this->belongsTo(Human::class);
-    }
+    // public function human()
+    // {
+    //     return $this->belongsTo(Human::class);
+    // }
 
     public function products()
     {

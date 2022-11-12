@@ -10,8 +10,8 @@ class Human extends Model
 {
     use HasFactory;
 
-    public function buyers()
-    {
-        return $this->hasMany(Buyer::class);
-    }
+    // public function buyers()
+    // {
+    //     return $this->hasMany(Buyer::class);
+    // }
 }

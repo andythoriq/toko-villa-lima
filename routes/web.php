@@ -23,7 +23,10 @@ Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/saran', [PageController::class, 'saran'])->name('saran');
 
-Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name('product');
+
+Route::get('/products/', [ProductController::class, 'index'])->name('allProduct');
+Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name('showProduct');
+Route::get('/products/create', [ProductController::class, 'create'])->name('createProduct');
 
 Route::get('/buy', [BuyerController::class, 'showBuy'])->name('showBuy');
-Route::get('/post', [BuyerController::class, 'buy'])->name('buy');
+Route::post('/buy', [BuyerController::class, 'buy'])->name('buy');
