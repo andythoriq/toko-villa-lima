@@ -1,7 +1,7 @@
 @extends('components.main')
 @section('main')
 
-        <h1>test -> ini adalah {{ $title ?? '' }}</h1>
+        <h1>{{ $title ?? '' }}</h1>
 @endsection
 
 @section('tombol')
