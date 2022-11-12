@@ -1,9 +1,14 @@
 @extends('components.main')
 @section('main')
-    <main class="container">
+
         <h1>test -> ini adalah {{ $title ?? '' }}</h1>
-    </main>
 @endsection
+
+@section('tombol')
+    <button class="btn btn-outline-light" type="button"><i class="fa-brands fa-square-whatsapp fs-1"></i><p class="mb-0">pesan melalui WhatsApp</p></button>
+</div>
+@endsection
+
 @section('description', $description ?? '')
 
 @section('title', $title ?? '')

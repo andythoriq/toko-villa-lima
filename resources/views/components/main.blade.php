@@ -5,7 +5,10 @@
 </head>
 <body>
     @include('components.nav')
-    @yield('main')
+    @include('components.jumbotron')
+    <main class="container rounded-5">
+        @yield('main')
+    </main>
     @include('components.footer')
     @include('components.scripts')
 </body>

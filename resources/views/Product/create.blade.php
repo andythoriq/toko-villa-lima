@@ -1,4 +1,4 @@
-@extends('administration.main')
+@extends('adminpanelcomponents.main')
 @section('main')
 
 @endsection

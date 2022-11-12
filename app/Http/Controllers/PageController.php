@@ -10,7 +10,7 @@ class PageController extends Controller
     {
         return view('halaman.beranda', [
             'title' => 'Toko Villa Lima',
-            'description' => 'Toko Villa Lima biasa disebut dengan Tokovili, berada di Villa Bogor Indah 5 merupakan toko atau warung yang memenuhi kebutuhan rumah tangga. Toko Villa Lima tidak hanya menjual sembako dan jajanan, tapi juga menjual atau menyediakan layanan isi ulang galon, token listrik, dan pulsa. Situs ini hanya melayani warga yang sedang berada di kawasan Villa Bogor Indah 5. Jika anda berada jauh dari Villa Bogor Indah 5, maka datang dan belilah secara langsung. Lokasi lebih lengkap berada di Kabupaten Bogor kecamatan Sukaraja desa Pasir Jambu Villa Bogor Indah 5
+            'description' => 'Toko Villa Lima biasa disebut dengan Tokovili, berada di Villa Bogor Indah 5 merupakan toko atau warung yang memenuhi kebutuhan rumah tangga. Toko Villa Lima tidak hanya menjual sembako dan jajanan, tapi juga menjual atau menyediakan layanan isi ulang galon, token listrik, dan pulsa. Situs ini hanya melayani warga yang sedang berada di kawasan Villa Bogor Indah 5. Jika anda berada jauh dari Villa Bogor Indah 5, maka datang dan belilah secara langsung. Lokasi lebih lengkap berada di Kabupaten Bogor kecamatan Sukaraja desa Pasir Jambu Villa Bogor Indah 5.
             ',
             'activate' => 'Beranda'
     ]);
