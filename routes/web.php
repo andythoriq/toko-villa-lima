@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// TODO!!  menggunakan bahasa indonesia -> beranda, saran, namaFields
+
 Route::get('/', [PageController::class, 'beranda'])->name('beranda');
 Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
-Route::get('/saran', function(){
-    return "halaman saran belum dibuat";
-})->name('saran');
+Route::get('/saran', [PageController::class, 'saran'])->name('saran');
+
+Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name('product');
+
+Route::get('/buy', [BuyerController::class, 'showBuy'])->name('showBuy');
+Route::get('/post', [BuyerController::class, 'buy'])->name('buy');

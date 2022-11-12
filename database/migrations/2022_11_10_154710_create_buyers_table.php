@@ -14,10 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('buyers', function (Blueprint $table) {
-            // $table->id();
+            $table->id();
             $table->foreignId('human_id');
-            $table->timestamps();
-
         });
     }
 

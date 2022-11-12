@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('nama')->unique();
             $table->string('slug')->unique();
-            $table->string('jenis')->unique()->nullable();
-            $table->integer('jumlah');
-            $table->integer('harga');
-            $table->integer('beratDalamGram');
+            $table->string('jenis')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('jumlah')->nullable();
+            $table->bigInteger('harga');
+            $table->string('gambar')->unique()->nullable();
+            $table->bigInteger('berat')->nullable();
             $table->timestamps();
         });
     }
