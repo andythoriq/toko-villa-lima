@@ -1,7 +1,6 @@
 @extends('components.main')
 @section('main')
-
-        <h1>{{ $title ?? '' }}</h1>
+        <h1>{{ $title ? 'Beri Kami Saran' : '' }}</h1>
 @endsection
 
 @section('tombol')

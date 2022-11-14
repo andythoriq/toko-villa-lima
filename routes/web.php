@@ -18,15 +18,17 @@ use Illuminate\Support\Facades\Route;
 
 // TODO!!  menggunakan bahasa indonesia -> beranda, saran, namaFields
 
+// route halaman
 Route::get('/', [PageController::class, 'beranda'])->name('beranda');
-Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
+Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
-Route::get('/saran', [PageController::class, 'saran'])->name('saran');
 
-
+// route produk
 Route::get('/products/', [ProductController::class, 'index'])->name('allProduct');
-Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name('showProduct');
+Route::get('/products/{stock:slug}', [ProductController::class, 'show'])->name('showProduct');
 Route::get('/products/create', [ProductController::class, 'create'])->name('createProduct');
+Route::view('/admin', 'adminpanelcomponents.main');
 
-Route::get('/buy', [BuyerController::class, 'showBuy'])->name('showBuy');
+// proses pembelian
+Route::get('/buy/{stock:slug}', [BuyerController::class, 'createBuy'])->name('createBuy');
 Route::post('/buy', [BuyerController::class, 'buy'])->name('buy');
