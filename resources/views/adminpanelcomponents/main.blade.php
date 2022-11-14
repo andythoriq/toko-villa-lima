@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
+<link rel="stylesheet" href="{{ asset('css/font-styling.css') }}">
 
 
 <nav class="navbar navbar-expand-lg bg-light">
@@ -22,6 +23,8 @@
       </div>
     </div>
   </nav>
+
+  @yield('main')
 
 
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>

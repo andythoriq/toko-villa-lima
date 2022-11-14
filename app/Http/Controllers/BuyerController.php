@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 
 class BuyerController extends Controller
 {
-    public function createBuy(Stock $slug)
+    public function createBeli(Stock $slug)
     {
         $buy = Stock::where('slug', $slug)->get();
         return view('transaction.index', compact('buy'));
     }
 
-    public function buy()
+    public function beli()
     {
 
     }

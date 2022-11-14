@@ -3,6 +3,7 @@
 use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// TODO!!  menggunakan bahasa indonesia -> beranda, saran, namaFields
+// TODO!!  menggunakan bahasa indonesia -> beranda, saran, namaFields, beli
 
 // route halaman
 Route::get('/', [PageController::class, 'beranda'])->name('beranda');
@@ -24,11 +25,11 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 // route produk
-Route::get('/products/', [ProductController::class, 'index'])->name('allProduct');
-Route::get('/products/{stock:slug}', [ProductController::class, 'show'])->name('showProduct');
-Route::get('/products/create', [ProductController::class, 'create'])->name('createProduct');
-Route::view('/admin', 'adminpanelcomponents.main');
+Route::get('/stock/', [StockController::class, 'index'])->name('allStock');
+Route::get('/stock/{stock:slug}', [StockController::class, 'show'])->name('showStock');
+Route::get('/stock/add', [StockController::class, 'add'])->name('createStock');
+Route::post('/stock/add', [StockController::class, 'store'])->name('storeStock');
 
 // proses pembelian
-Route::get('/buy/{stock:slug}', [BuyerController::class, 'createBuy'])->name('createBuy');
-Route::post('/buy', [BuyerController::class, 'buy'])->name('buy');
+Route::get('/beli/{stock:slug}', [BuyerController::class, 'createBeli'])->name('createBeli');
+Route::post('/beli', [BuyerController::class, 'beli'])->name('beli');

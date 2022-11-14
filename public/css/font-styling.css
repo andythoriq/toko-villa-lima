@@ -1,0 +1,47 @@
+
+    @font-face {
+        font-family: 'fa-regular-400';
+        src: url(../fontawesome/webfonts/fa-regular-400.woff2) format("woff2");
+    }
+    @font-face {
+    font-family: 'sparky_stonesregular';
+    src: url(../fontawesome/webfonts/sparkystonesregular-bw6ld-webfont.woff2) format("woff2"),
+         url(../fontawesome/webfonts/sparkystonesregular-bw6ld-webfont.woff) format("woff");
+    font-weight: normal;
+    font-style:normal;
+}
+@font-face {
+    font-family: 'cascadia_coderegular';
+    src: url(../fontawesome/webfonts/cascadia-webfont.woff2) format('woff2'),
+         url(../fontawesome/webfonts/cascadia-webfont.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'edoregular';
+    src: url(../fontawesome/webfonts/edo-webfont.woff2) format("woff2"),
+         url(../fontawesome/webfonts/edo-webfont.woff) format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+    main h1{
+        font-family: 'sparky_stonesregular';
+    }
+    main .card{
+
+    }
+    nav{
+        font-family: 'fa-regular-400';
+    }
+    .jumbotron h1{
+        font-family: 'edoregular';
+    }
+    .jumbotron p{
+        font-family: 'cascadia_coderegular';
+    }
+    form{
+        font-family: 'fa-regular-400';
+    }
+    form input, form textarea{
+        font-family: 'cascadia_coderegular';
+    }
