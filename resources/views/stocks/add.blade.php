@@ -1,12 +1,20 @@
 @extends('adminpanelcomponents.main')
 @section('main')
 <main class="row justify-content-center">
-    <h1 class="text-center col-10">Menambahkan Produk Ke Halaman Beranda</h1>
-    <form action="{{ route('addStock') }}" method="post" enctype="multipart/form-data" class="col-lg-8 col-10">
+    <h1 class="text-center col-10">Menambahkan Produk</h1>
+    <h2 class="text-center fs-5 text-secondary col-10">Data-data ini akan ditampilkan di beranda</h2>
+    <form action="{{ route('storeStock') }}" method="post" enctype="multipart/form-data" class="col-lg-8 col-10">
         @csrf
         <div class="input-group input-group mt-2">
             <span class="input-group-text" id="q">Nama</span>
-            <input type="text" class="form-control" aria-describedby="q">
+            <input name="nama" type="text" class="form-control @error('nama')
+                is-invalid
+            @enderror" aria-describedby="q">
+            @error('nama')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
     <hr class="m-4">
         <label class="form-label">Stok</label>
@@ -16,17 +24,17 @@
         </select>
     <hr class="m-4">
         <div class="">
-            <label for="e" class="form-label">Deskripsi</label>
-            <textarea class="form-control ms-2" id="e" rows="5"></textarea>
-        </div>
-    <hr class="m-4">
-        <div class="">
-            <label for="r" class="form-label">Gambar</label>
+            <label for="r" class="form-label">Gambar<small class="tidak-wajib text-secondary ps-1">(tidak wajib untuk diisi)</small></label>
             <input class="form-control ms-2" type="file" id="r">
         </div>
     <hr class="m-4">
-        <div class="mb-5">
-            <button type="submit" class="btn btn-outline-success">Tambah Data Baru</button>
+        <div class="">
+            <label for="e" class="form-label">Deskripsi<small class="tidak-wajib text-secondary ps-1">(tidak wajib untuk diisi)</small></label>
+            <textarea class="form-control ms-2" id="e" rows="5"></textarea>
+        </div>
+    <hr class="m-4">
+        <div class="mb-5 tombol-submit">
+            <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-plus pe-1"></i>Tambah</button>
         </div>
     </form>
 </main>

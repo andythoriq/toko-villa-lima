@@ -1,11 +1,11 @@
-    @font-face {
-        font-family: 'fa-regular-400';
-        src: url(../fontawesome/webfonts/fa-regular-400.woff2) format("woff2");
-    }
-    @font-face {
+@font-face {
+    font-family: 'fa-regular-400';
+    src: url(../fontawesome/webfonts/fa-regular-400.woff2) format("woff2");
+}
+@font-face {
     font-family: 'sparky_stonesregular';
     src: url(../fontawesome/webfonts/sparkystonesregular-bw6ld-webfont.woff2) format("woff2"),
-         url(../fontawesome/webfonts/sparkystonesregular-bw6ld-webfont.woff) format("woff");
+            url(../fontawesome/webfonts/sparkystonesregular-bw6ld-webfont.woff) format("woff");
     font-weight: normal;
     font-style:normal;
 }
@@ -34,6 +34,9 @@
     main h1{
         font-family: 'sparky_stonesregular';
     }
+    main h2{
+        font-family: 'cascadia_coderegular';
+    }
     main table{
         text-decoration: none;
     }
@@ -51,4 +54,7 @@
     }
     form input, form textarea{
         font-family: 'cascadia_coderegular';
+    }
+    form .tombol-submit, .tidak-wajib, .invalid-feedback {
+        font-family: 'hackregular';
     }

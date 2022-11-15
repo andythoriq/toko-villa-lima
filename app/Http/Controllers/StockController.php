@@ -13,9 +13,13 @@ class StockController extends Controller
         return view('stocks.add');
     }
 
-    public function store(Stock $stock)
+    public function store(Request $request, Stock $stock)
     {
-
+        $request->validate([
+            'nama' => ['required', 'max:200', 'unique:stocks', 'string'],
+            'stok' => ['required'],
+            'gambar' => ['image']
+        ]);
     }
 
     public function show(Stock $stock)

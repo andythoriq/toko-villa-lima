@@ -44,7 +44,8 @@ class PageController extends Controller
 
     public function stocks()
     {
-        $stocks = Stock::all();
-        return view('stocks .index', compact('stocks'));
+        return view('stocks.index', [
+            'stocks' => Stock::all(),
+        ]);
     }
 }
