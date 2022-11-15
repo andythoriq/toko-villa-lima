@@ -25,10 +25,10 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 // route stock
-Route::prefix('/stock')->group(function (){
-    Route::get('/', [PageController::class, 'stock'])->name('allStock');
+Route::prefix('/stocks')->group(function(){
+    Route::get('/', [PageController::class, 'stocks'])->name('allStocks');
     Route::get('/{stock:slug}', [StockController::class, 'show'])->name('showStock');
-    Route::get('/tambah', [StockController::class, 'create'])->name('addStock');
+    Route::get('/tambah', [StockController::class, 'tambah'])->name('addStock');
     Route::post('/tambah', [StockController::class, 'store'])->name('storeStock');
     Route::get('/edit/{stock:slug}', [StockController::class, 'edit'])->name('editStock');
     Route::put('/edit/{stock:slug}', [StockController::class, 'update'])->name('updateStock');
@@ -38,7 +38,7 @@ Route::prefix('/stock')->group(function (){
 // route customer
 
 // proses pembelian
-Route::get('/beli/{stock:slug}', [BuyerController::class, 'createBeli'])->name('createBeli');
+Route::get('/beli/{stock:slug}', [BuyerController::class, 'showBeli'])->name('showBeli');
 Route::post('/beli', [BuyerController::class, 'beli'])->name('beli');
 
 //Route::middleware()->group(function () {

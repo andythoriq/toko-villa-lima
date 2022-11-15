@@ -1,4 +1,3 @@
-
     @font-face {
         font-family: 'fa-regular-400';
         src: url(../fontawesome/webfonts/fa-regular-400.woff2) format("woff2");
@@ -35,8 +34,8 @@
     main h1{
         font-family: 'sparky_stonesregular';
     }
-    main .card{
-
+    main table{
+        text-decoration: none;
     }
     nav{
         font-family: 'fa-regular-400';

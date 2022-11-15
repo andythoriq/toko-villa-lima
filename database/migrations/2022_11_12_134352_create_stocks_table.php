@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama')->unique();
             $table->string('slug')->unique();
-            $table->enum('stok', ['ada', 'habis']);
+            $table->enum('persediaan', ['ada', 'habis']);
             $table->text('deskripsi')->nullable();
             $table->string('gambar')->unique()->nullable();
             $table->timestamps();

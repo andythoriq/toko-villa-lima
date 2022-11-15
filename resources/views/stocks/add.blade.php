@@ -2,7 +2,7 @@
 @section('main')
 <main class="row justify-content-center">
     <h1 class="text-center col-10">Menambahkan Produk Ke Halaman Beranda</h1>
-    <form action="/stock/tambah" method="post" enctype="multipart/form-data" class="col-lg-8 col-10">
+    <form action="{{ route('addStock') }}" method="post" enctype="multipart/form-data" class="col-lg-8 col-10">
         @csrf
         <div class="input-group input-group mt-2">
             <span class="input-group-text" id="q">Nama</span>
@@ -25,7 +25,7 @@
             <input class="form-control ms-2" type="file" id="r">
         </div>
     <hr class="m-4">
-        <div class="">
+        <div class="mb-5">
             <button type="submit" class="btn btn-outline-success">Tambah Data Baru</button>
         </div>
     </form>

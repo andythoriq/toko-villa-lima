@@ -42,8 +42,9 @@ class PageController extends Controller
         ]);
     }
 
-    public function stock()
+    public function stocks()
     {
-        return view('stock.index');
+        $stocks = Stock::all();
+        return view('stocks .index', compact('stocks'));
     }
 }

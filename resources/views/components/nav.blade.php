@@ -6,9 +6,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav text-center">
-            <a class="nav-link{{ $activate == 'Beranda' ? ' text-light fw-bolder bg-secondary rounded-5' : '' }}" href=" / ">Beranda</a>
-            <a class="nav-link{{ $activate == 'About' ? ' text-light fw-bolder bg-secondary rounded-5' : '' }}" href=" /about ">About</a>
-            <a class="nav-link{{ $activate == 'Contact' ? ' text-light fw-bolder bg-secondary rounded-5' : '' }}" href=" /contact ">Contact</a>
+            <a class="nav-link{{ $activate == 'Beranda' ? ' text-light fw-bolder bg-secondary rounded-5' : '' }}" href="{{ route('beranda') }}">Beranda</a>
+            <a class="nav-link{{ $activate == 'About' ? ' text-light fw-bolder bg-secondary rounded-5' : '' }}" href="{{ route('about') }}">About</a>
+            <a class="nav-link{{ $activate == 'Contact' ? ' text-light fw-bolder bg-secondary rounded-5' : '' }}" href="{{ route('contact') }}">Contact</a>
         </div>
         </div>
     </div>

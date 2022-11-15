@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class StockController extends Controller
 {
 
-    public function create()
+    public function tambah()
     {
-        return view('stock.add');
+        return view('stocks.add');
     }
 
     public function store(Stock $stock)
