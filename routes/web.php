@@ -19,17 +19,28 @@ use Illuminate\Support\Facades\Route;
 
 // TODO!!  menggunakan bahasa indonesia -> beranda, saran, namaFields, beli
 
-// route halaman
+// route halaman customer
 Route::get('/', [PageController::class, 'beranda'])->name('beranda');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
-// route produk
-Route::get('/stock/', [StockController::class, 'index'])->name('allStock');
-Route::get('/stock/{stock:slug}', [StockController::class, 'show'])->name('showStock');
-Route::get('/stock/add', [StockController::class, 'add'])->name('createStock');
-Route::post('/stock/add', [StockController::class, 'store'])->name('storeStock');
+// route stock
+Route::prefix('/stock')->group(function (){
+    Route::get('/', [PageController::class, 'stock'])->name('allStock');
+    Route::get('/{stock:slug}', [StockController::class, 'show'])->name('showStock');
+    Route::get('/tambah', [StockController::class, 'create'])->name('addStock');
+    Route::post('/tambah', [StockController::class, 'store'])->name('storeStock');
+    Route::get('/edit/{stock:slug}', [StockController::class, 'edit'])->name('editStock');
+    Route::put('/edit/{stock:slug}', [StockController::class, 'update'])->name('updateStock');
+    Route::delete('/delete/{stock:slug}', [Stock::class, 'destroy'])->name('deleteStock');
+});
+
+// route customer
 
 // proses pembelian
 Route::get('/beli/{stock:slug}', [BuyerController::class, 'createBeli'])->name('createBeli');
 Route::post('/beli', [BuyerController::class, 'beli'])->name('beli');
+
+//Route::middleware()->group(function () {
+    // TODO : route stock taro sini
+//});

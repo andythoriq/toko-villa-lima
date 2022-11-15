@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('slug');
             $table->string('jenis')->nullable();
             $table->integer('jumlah')->nullable();
-            $table->bigInteger('harga');
             $table->bigInteger('berat')->nullable();
             $table->timestamps();
         });

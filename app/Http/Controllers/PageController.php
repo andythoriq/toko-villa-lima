@@ -41,4 +41,9 @@ class PageController extends Controller
             'activate' => 'Chart'
         ]);
     }
+
+    public function stock()
+    {
+        return view('stock.index');
+    }
 }

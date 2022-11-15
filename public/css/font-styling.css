@@ -24,6 +24,14 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'hackregular';
+    src: url(../fontawesome/webfonts/hack-regular-webfont.woff2) format('woff2'),
+         url(../fontawesome/webfonts/hack-regular-webfont.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
     main h1{
         font-family: 'sparky_stonesregular';
     }
