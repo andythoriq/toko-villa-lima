@@ -18,19 +18,19 @@
         </div>
     <hr class="m-4">
         <label class="form-label">Stok</label>
-        <select class="form-select ms-2">
+        <select name="persediaan" class="form-select ms-2 fs-5">
             <option value="ada">ada</option>
             <option value="habis">habis</option>
         </select>
     <hr class="m-4">
         <div class="">
             <label for="r" class="form-label">Gambar<small class="tidak-wajib text-secondary ps-1">(tidak wajib untuk diisi)</small></label>
-            <input class="form-control ms-2" type="file" id="r">
+            <input name="gambar" class="form-control ms-2" type="file" id="r">
         </div>
     <hr class="m-4">
         <div class="">
             <label for="e" class="form-label">Deskripsi<small class="tidak-wajib text-secondary ps-1">(tidak wajib untuk diisi)</small></label>
-            <textarea class="form-control ms-2" id="e" rows="5"></textarea>
+            <textarea name="deskripsi" class="form-control ms-2" id="e" rows="5"></textarea>
         </div>
     <hr class="m-4">
         <div class="mb-5 tombol-submit">

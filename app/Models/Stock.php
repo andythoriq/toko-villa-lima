@@ -10,9 +10,10 @@ class Stock extends Model
 {
     use HasFactory;
 
-    // TODO : kapan-kapan menggunakan soft deletes
+    // TODO kapan-kapan menggunakan soft deletes
     // use SoftDeletes;
 
+    protected $table = 'stocks';
     protected $fillable = ['nama', 'persediaan'];
     public function getRouteKeyName()
     {

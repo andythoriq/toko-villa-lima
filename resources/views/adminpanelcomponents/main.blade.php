@@ -24,10 +24,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/stock">stock</a>
+            <a class="nav-link" href="{{ route('stocks') }}">stock</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/customer">customer</a>
+            <a class="nav-link" href="{{ route('customers') }}">customer</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/saran">saran</a>

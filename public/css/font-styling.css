@@ -31,28 +31,19 @@
     font-weight: normal;
     font-style: normal;
 }
-    main h1{
-        font-family: 'sparky_stonesregular';
-    }
-    main h2{
-        font-family: 'cascadia_coderegular';
-    }
     main table{
         text-decoration: none;
     }
-    nav{
+    main h1{
+        font-family: 'sparky_stonesregular';
+    }
+    nav, form{
         font-family: 'fa-regular-400';
     }
     .jumbotron h1{
         font-family: 'edoregular';
     }
-    .jumbotron p{
-        font-family: 'cascadia_coderegular';
-    }
-    form{
-        font-family: 'fa-regular-400';
-    }
-    form input, form textarea{
+    form input, form textarea, .jumbotron p, main h2, select{
         font-family: 'cascadia_coderegular';
     }
     form .tombol-submit, .tidak-wajib, .invalid-feedback {

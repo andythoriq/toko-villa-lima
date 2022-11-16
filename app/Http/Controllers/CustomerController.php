@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Stock;
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class CustomerController extends Controller
 {
     public function beranda()
     {
@@ -33,19 +32,12 @@ class PageController extends Controller
             // TODO!! : ... adalah nomor telephone atau link Wa
         ]);
     }
-    public function chart()
+    public function cart()
     {
-        return view('halaman.chart', [
-            'title' => 'Chart',
+        return view('halaman.cart', [
+            'title' => 'Cart',
             'description' => "",
-            'activate' => 'Chart'
-        ]);
-    }
-
-    public function stocks()
-    {
-        return view('stocks.index', [
-            'stocks' => Stock::all(),
+            'activate' => 'Cart'
         ]);
     }
 }
