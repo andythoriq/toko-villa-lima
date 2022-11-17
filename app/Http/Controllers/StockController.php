@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stock;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
@@ -25,12 +26,22 @@ class StockController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validStocks = $request->validate([
             'nama' => ['required', 'max:200', 'unique:stocks', 'string'],
             'persediaan' => ['required'],
-            'gambar' => 'image|file|max:1000',
-            ''
+            'gambar' => 'image|file|max:1000|nullable|mimes:png,jpg,jpeg,avif,webp',
+            'deskripsi' => 'nullable',
         ]);
+
+        $validStocks['slug'] = strtolower(Str::slug($request->nama, '-'));
+
+        if($request->file('gambar')){
+            $validStocks['gambar'] = $request->file('image')->store('product-img');
+            // $imgName = $request->gambar->getClientOriginalName() . '-' . time() . '-' .$request->gambar->extension();
+            // $request->gambar->move(public_path('image'), $imgName);
+        }
+
+        Stock::create($validStocks);
     }
     // TODO :
 
@@ -38,5 +49,15 @@ class StockController extends Controller
     {
         // $stock = Stock::where('slug', $stock)->first();
         // return view('', compact('stock'));
+    }
+
+    public function edit()
+    {
+        return;
+    }
+
+    public function update()
+    {
+        return;
     }
 }
