@@ -34,10 +34,10 @@
     main table{
         text-decoration: none;
     }
-    main h1{
+    main h1, .card h2{
         font-family: 'sparky_stonesregular';
     }
-    nav, form{
+    nav, form, .a-paling-atas-stocks{
         font-family: 'fa-regular-400';
     }
     .jumbotron h1{
@@ -46,6 +46,6 @@
     form input, form textarea, .jumbotron p, main h2, select{
         font-family: 'cascadia_coderegular';
     }
-    form .tombol-submit, .tidak-wajib, .invalid-feedback {
+    form .tombol-submit, .tidak-wajib, .invalid-feedback, .card, .form-di-index-stocks a {
         font-family: 'hackregular';
     }

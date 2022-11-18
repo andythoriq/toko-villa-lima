@@ -1,6 +1,7 @@
 @extends('components.main')
 @section('main')
         <h1>{{ $title ? 'Gallery' : '' }}</h1>
+        <hr>
 @endsection
 
 @section('tombol')

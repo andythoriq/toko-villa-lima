@@ -14,7 +14,7 @@ class Stock extends Model
     // use SoftDeletes;
 
     protected $table = 'stocks';
-    protected $fillable = ['nama', 'persediaan'];
+    protected $fillable = ['nama', 'persediaan', 'deskripsi', 'gambar', 'slug'];
     public function getRouteKeyName()
     {
         return 'slug';

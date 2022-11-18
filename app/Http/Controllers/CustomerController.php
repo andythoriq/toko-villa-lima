@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stock;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
     public function beranda()
     {
+
         return view('halaman.beranda', [
             'title' => 'Toko Villa Lima',
             'description' => '',
             'activate' => 'Beranda',
-            // TODO : 'stocks' => Stock::orderBy('created_at', 'asc')->get()
+            'stocks' => Stock::orderBy('created_at', 'asc')->get()
     ]);
     }
     public function about()

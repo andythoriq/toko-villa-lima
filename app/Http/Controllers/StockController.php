@@ -27,13 +27,13 @@ class StockController extends Controller
     public function store(Request $request)
     {
         $validStocks = $request->validate([
-            'nama' => ['required', 'max:200', 'unique:stocks', 'string'],
+            'nama' => ['required', 'max:200', 'unique:stocks,nama', 'string'],
             'persediaan' => ['required'],
             'gambar' => 'image|file|max:1000|nullable|mimes:png,jpg,jpeg,avif,webp',
             'deskripsi' => 'nullable',
         ]);
 
-        $validStocks['slug'] = strtolower(Str::slug($request->nama, '-'));
+        $validStocks['slug'] = Str::slug($request->nama);
 
         if($request->file('gambar')){
             $validStocks['gambar'] = $request->file('image')->store('product-img');
@@ -42,6 +42,7 @@ class StockController extends Controller
         }
 
         Stock::create($validStocks);
+        return redirect('/');
     }
     // TODO :
 
