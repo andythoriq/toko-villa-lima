@@ -32,9 +32,9 @@ Route::prefix('/stocks')->group(function(){
     Route::get('/tambah', [StockController::class, 'tambah'])->name('addStock');
     Route::post('/tambah', [StockController::class, 'store'])->name('storeStock');
     Route::get('/{stock:slug}', [StockController::class, 'show'])->name('showStock');
-    Route::get('/edit/{stock:slug}', [StockController::class, 'edit'])->name('editStock');
-    Route::put('/edit/{stock:slug}', [StockController::class, 'update'])->name('updateStock');
-    Route::delete('/delete/{stock:slug}', [StockController::class, 'destroy'])->name('deleteStock');
+    Route::get('/{stock:slug}/edit', [StockController::class, 'edit'])->name('editStock');
+    Route::put('/{stock:slug}/edit', [StockController::class, 'update'])->name('updateStock');
+    Route::delete('/{stock:slug}/', [StockController::class, 'delete'])->name('deleteStock');
 });
 
 // route pengelola customer (admin)
@@ -45,7 +45,7 @@ Route::get('/register', [AutentikasiController::class, 'register'])->name('regis
 Route::post('/register', [AutentikasiController::class, 'createRegister'])->name('crateRegister');
 
 // proses pembelian
-Route::get('/beli/{stock:slug}', [BuyerController::class, 'showBeli'])->name('showBeli');
+Route::get('/{stock:slug}/beli', [BuyerController::class, 'showBeli'])->name('showBeli');
 Route::post('/beli', [BuyerController::class, 'beli'])->name('beli');
 
 //Route::middleware()->group(function () {

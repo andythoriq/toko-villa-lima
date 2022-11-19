@@ -15,8 +15,8 @@ class Stock extends Model
 
     protected $table = 'stocks';
     protected $fillable = ['nama', 'persediaan', 'deskripsi', 'gambar', 'slug'];
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+    // public function getRouteKeyName()
+    // {
+    //     return 'slug';
+    // }
 }

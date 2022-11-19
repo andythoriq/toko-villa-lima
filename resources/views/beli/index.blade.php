@@ -1,7 +1,8 @@
 @extends('components.main')
 @section('main')
-    {{ $stock->nama }}
-    <h1>test</h1>
+    <form action="{{ route('beli') }}" method="post">
+
+    </form>
 @endsection
 @section('title', 'beli')
 @section('tombol')

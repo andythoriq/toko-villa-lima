@@ -5,7 +5,7 @@
 @endsection
 
 @section('tombol')
-    <button class="btn btn-outline-light" type="button"><i class="fa-brands fa-square-whatsapp fs-1"></i><p class="mb-0">pesan melalui WhatsApp</p></button>
+    <button class="btn btn-outline-light" type="button"><i class="fa-brands fa-square-whatsapp fs-1"></i><p class="mb-0">hubungi melalui WhatsApp</p></button>
 </div>
 @endsection
 

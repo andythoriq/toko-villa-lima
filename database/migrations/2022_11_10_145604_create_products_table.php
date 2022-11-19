@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('slug');
-            $table->string('jenis')->nullable();
-            $table->integer('jumlah')->nullable();
-            $table->bigInteger('berat')->nullable();
+            // $table->string('jenis')->nullable();
+            $table->string('jumlah')->nullable();
+            // $table->bigInteger('berat')->nullable();
             $table->timestamps();
         });
     }

@@ -36,29 +36,45 @@ class StockController extends Controller
         $validStocks['slug'] = Str::slug($request->nama);
 
         if($request->file('gambar')){
-            $validStocks['gambar'] = $request->file('image')->store('product-img');
+            $validStocks['gambar'] = $request->file('gambar')->store('product-img');
             // $imgName = $request->gambar->getClientOriginalName() . '-' . time() . '-' .$request->gambar->extension();
             // $request->gambar->move(public_path('image'), $imgName);
         }
 
         Stock::create($validStocks);
-        return redirect('/');
+        return redirect('/stocks')->with('success', "Data telah ditambahkan. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
     }
     // TODO :
 
     public function show(Stock $stock)
     {
-        // $stock = Stock::where('slug', $stock)->first();
-        // return view('', compact('stock'));
+        $stock = Stock::where('id', $stock->id)->orWhere('slug', $stock->slug)->firstOrFail();
+        return view('stocks.show', compact('stock'));
     }
 
-    public function edit()
+    public function edit(Stock $stock)
     {
-        return;
+        return view('stocks.edit', compact('stock'));
     }
 
-    public function update()
+    public function update(Request $request, Stock $stock)
     {
-        return;
+        $validStocks = $request->validate([
+            'nama' => ['required', 'max:200', 'unique:stocks,nama', 'string'],
+            'persediaan' => ['required'],
+            'gambar' => 'image|file|max:1000|nullable|mimes:png,jpg,jpeg,avif,webp',
+            'deskripsi' => 'nullable',
+        ]);
+
+        $validStocks['slug'] = Str::slug($request->nama);
+
+        Stock::where('id', $stock->id)->orWhere('slug', $stock->slug)->update($validStocks);
+        return redirect('/stocks')->with('success', "Data telah ditambahkan. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
+    }
+
+    public function delete(Stock $stock)
+    {
+        Stock::destroy($stock->id);
+        return redirect('/stocks')->with('warning', "Data telah dihapus. Periksa Beranda -> " . "<a href='/'>di sini</a>" );;
     }
 }

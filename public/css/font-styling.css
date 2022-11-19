@@ -34,7 +34,7 @@
     main table{
         text-decoration: none;
     }
-    main h1, .card h2{
+    main h1, .card h2, .contoh-tampilan-di-beranda{
         font-family: 'sparky_stonesregular';
     }
     nav, form, .a-paling-atas-stocks{

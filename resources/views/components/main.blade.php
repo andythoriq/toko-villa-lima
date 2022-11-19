@@ -6,7 +6,6 @@
 <body>
     @include('components.nav')
     @include('components.jumbotron')
-    @include('components.alert')
     <main class="container rounded-5">
         @yield('main')
     </main>
