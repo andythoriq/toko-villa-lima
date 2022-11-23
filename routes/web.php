@@ -25,6 +25,7 @@ Route::get('/', [CustomerController::class, 'beranda'])->name('beranda');
 Route::get('/about', [CustomerController::class, 'about'])->name('about');
 Route::get('/contact', [CustomerController::class, 'contact'])->name('contact');
 Route::get('/cart', [CustomerController::class, 'cart'])->name('cart');
+Route::get('/riwayat-pembelian', [CustomerController::class, 'history'])->name('history');
 
 // route stock (admin)
 Route::prefix('/stocks')->group(function(){
@@ -34,7 +35,7 @@ Route::prefix('/stocks')->group(function(){
     Route::get('/{stock:slug}', [StockController::class, 'show'])->name('showStock');
     Route::get('/{stock:slug}/edit', [StockController::class, 'edit'])->name('editStock');
     Route::put('/{stock:slug}/edit', [StockController::class, 'update'])->name('updateStock');
-    Route::delete('/{stock:slug}/', [StockController::class, 'delete'])->name('deleteStock');
+    Route::delete('/{stock:slug}', [StockController::class, 'delete'])->name('deleteStock');
 });
 
 // route pengelola customer (admin)
@@ -45,7 +46,7 @@ Route::get('/register', [AutentikasiController::class, 'register'])->name('regis
 Route::post('/register', [AutentikasiController::class, 'createRegister'])->name('crateRegister');
 
 // proses pembelian
-Route::get('/{stock:slug}/beli', [BuyerController::class, 'showBeli'])->name('showBeli');
+Route::get('/beli/{stock:slug}', [BuyerController::class, 'showBeli'])->name('showBeli');
 Route::post('/beli', [BuyerController::class, 'beli'])->name('beli');
 
 //Route::middleware()->group(function () {

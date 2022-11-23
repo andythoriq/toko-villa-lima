@@ -4,19 +4,19 @@
         function dapatWaktu(){
             date_default_timezone_set("Asia/Jakarta");
             $hour = date('H', time());
-            if( $hour > 6 && $hour <= 11) {
+            if( $hour > 5 && $hour <= 9) {
             return "Selamat Pagi";
             }
-            else if($hour > 11 && $hour <= 15) {
+            else if($hour > 10 && $hour <= 14) {
             return "Selamat Siang";
             }
-            else if($hour > 15 && $hour <= 19) {
+            else if($hour > 14 && $hour <= 18) {
             return "Selamat Sore";
             }
-            else if($hour > 19 && $hour <= 22){
+            else if($hour > 18 && $hour <= 21){
                 return "Selamat Malam";
             }
-            else if($hour > 22 && $hour <= 6){
+            else if($hour > 21 && $hour <= 5){
                 return "Toko buka dari 6 pagi sampai 10 malam";
             }
         }
@@ -34,10 +34,12 @@
     @endif
 @endsection
 
-
-
-
-
+@section('tombol')
+    <div class="row">
+        <a href="{{ route('cart') }}" class="btn btn-outline-light col-6 col-lg-3" type="button"><i class="fa-solid fa-cart-shopping fs-1"></i><p>keranjang belanjaan</p></a>
+        <a href="{{ route('history') }}" class="btn btn-outline-light col-6 col-lg-3" type="button"><i class="fa-solid fa-clock-rotate-left fs-1"></i><p>riwayat pembelian</p></a>
+    </div>
+@endsection
 
 @section('description', $description ?? '')
 {{-- TODO!! : tambahkan lokasi lebih lengkap agar mengoptimalkan pencarian search engine!! --}}

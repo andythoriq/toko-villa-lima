@@ -6,7 +6,7 @@
     <form action="{{ route('updateStock', $stock->slug) }}" method="post" enctype="multipart/form-data" class="col-lg-8 col-10">
         @csrf
         @method('put')
-        <input type="hidden" name="slug" disabled readonly>
+        <input type="text" name="slug" disabled readonly hidden>
         <div class="input-group input-group mt-2">
             <span class="input-group-text" id="q">Nama</span>
             <input name="nama" type="text" class="form-control @error('nama')
@@ -31,6 +31,7 @@
         </select>
     <hr class="m-4">
         <div class="">
+            {{-- <input type="text" name="oldGambar" value="{{ strval($stock->gambar) }}"  disabled readonly hidden> --}}
             <label for="r" class="form-label">Gambar<small class="tidak-wajib text-secondary ps-1">(tidak wajib untuk diisi)</small></label>
             <input name="gambar" class="form-control ms-2 @error('gambar')
                 is-invalid

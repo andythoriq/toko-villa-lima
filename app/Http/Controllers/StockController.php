@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Stock;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class StockController extends Controller
 {
@@ -59,21 +60,39 @@ class StockController extends Controller
 
     public function update(Request $request, Stock $stock)
     {
+
+        function cekPerubahanNama($request, $stock){
+            if ($request->nama == $stock->nama) {
+                return '';
+            }
+            return 'unique:stocks,nama';
+        }
+
         $validStocks = $request->validate([
-            'nama' => ['required', 'max:200', 'unique:stocks,nama', 'string'],
+            'nama' => ['required', 'max:200', cekPerubahanNama($request, $stock), 'string'],
             'persediaan' => ['required'],
             'gambar' => 'image|file|max:1000|nullable|mimes:png,jpg,jpeg,avif,webp',
             'deskripsi' => 'nullable',
         ]);
 
+
         $validStocks['slug'] = Str::slug($request->nama);
 
+        if($request->file('gambar')){
+            if($stock->gambar){
+                Storage::delete($stock->gambar);
+            }
+            $validStocks['gambar'] = $request->file('gambar')->store('product-img');
+        }
         Stock::where('id', $stock->id)->orWhere('slug', $stock->slug)->update($validStocks);
-        return redirect('/stocks')->with('success', "Data telah ditambahkan. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
+        return redirect('/stocks')->with('success', "Data telah diubah. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
     }
 
     public function delete(Stock $stock)
     {
+        if($stock->gambar){
+            Storage::delete($stock->gambar);
+        }
         Stock::destroy($stock->id);
         return redirect('/stocks')->with('warning', "Data telah dihapus. Periksa Beranda -> " . "<a href='/'>di sini</a>" );;
     }

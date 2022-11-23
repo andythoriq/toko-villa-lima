@@ -40,7 +40,7 @@
     nav, form, .a-paling-atas-stocks{
         font-family: 'fa-regular-400';
     }
-    .jumbotron h1{
+    .jumbotron h1, .row-beli{
         font-family: 'edoregular';
     }
     form input, form textarea, .jumbotron p, main h2, select{

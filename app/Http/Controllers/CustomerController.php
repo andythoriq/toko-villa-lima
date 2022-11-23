@@ -42,4 +42,9 @@ class CustomerController extends Controller
             'activate' => 'Cart'
         ]);
     }
+
+    public function history()
+    {
+        return "history pembelian";
+    }
 }
