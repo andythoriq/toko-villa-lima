@@ -7,7 +7,7 @@
             if( $hour > 5 && $hour <= 9) {
             return "Selamat Pagi";
             }
-            else if($hour > 10 && $hour <= 14) {
+            else if($hour > 9 && $hour <= 14) {
             return "Selamat Siang";
             }
             else if($hour > 14 && $hour <= 18) {
@@ -36,8 +36,8 @@
 
 @section('tombol')
     <div class="row">
-        <a href="{{ route('cart') }}" class="btn btn-outline-light col-6 col-lg-3" type="button"><i class="fa-solid fa-cart-shopping fs-1"></i><p>keranjang belanjaan</p></a>
-        <a href="{{ route('history') }}" class="btn btn-outline-light col-6 col-lg-3" type="button"><i class="fa-solid fa-clock-rotate-left fs-1"></i><p>riwayat pembelian</p></a>
+        <a href="{{ route('cart') }}" class="btn btn-outline-light col-6 col-lg-3" type="button"><i class="fa-solid fa-cart-shopping fs-1 mt-2"></i><p>keranjang belanjaan</p></a>
+        <a href="{{ route('history') }}" class="btn btn-outline-light col-6 col-lg-3" type="button"><i class="fa-solid fa-clock-rotate-left fs-1 mt-2"></i><p>riwayat pembelian</p></a>
     </div>
 @endsection
 

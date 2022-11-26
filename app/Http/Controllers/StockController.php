@@ -43,7 +43,7 @@ class StockController extends Controller
         }
 
         Stock::create($validStocks);
-        return redirect('/stocks')->with('success', "Data telah ditambahkan. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
+        return redirect(route('stocks'))->with('success', "Data telah ditambahkan. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
     }
     // TODO :
 
@@ -85,7 +85,7 @@ class StockController extends Controller
             $validStocks['gambar'] = $request->file('gambar')->store('product-img');
         }
         Stock::where('id', $stock->id)->orWhere('slug', $stock->slug)->update($validStocks);
-        return redirect('/stocks')->with('success', "Data telah diubah. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
+        return redirect(route('stocks'))->with('success', "Data telah diubah. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
     }
 
     public function delete(Stock $stock)
@@ -94,6 +94,6 @@ class StockController extends Controller
             Storage::delete($stock->gambar);
         }
         Stock::destroy($stock->id);
-        return redirect('/stocks')->with('warning', "Data telah dihapus. Periksa Beranda -> " . "<a href='/'>di sini</a>" );;
+        return redirect(route('stocks'))->with('warning', "Data telah dihapus. Periksa Beranda -> " . "<a href='/'>di sini</a>" );;
     }
 }

@@ -10,6 +10,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    public $fillable = ['nama', 'jumlah', 'slug'];
+
     public function buyers()
     {
         return $this->belongsToMany(Buyer::class);

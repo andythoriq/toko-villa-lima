@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Stock;
 use Illuminate\Http\Request;
 
@@ -38,8 +39,9 @@ class CustomerController extends Controller
     {
         return view('halaman.cart', [
             'title' => 'Cart',
-            'description' => "",
-            'activate' => 'Cart'
+            'description' => "Jika ada pesanan lebih bisa hubungi nomor di bawah.",
+            'activate' => 'Cart',
+            'products' => Product::orderBy('created_at', 'desc')->get()
         ]);
     }
 

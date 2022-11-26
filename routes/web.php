@@ -46,8 +46,8 @@ Route::get('/register', [AutentikasiController::class, 'register'])->name('regis
 Route::post('/register', [AutentikasiController::class, 'createRegister'])->name('crateRegister');
 
 // proses pembelian
-Route::get('/beli/{stock:slug}', [BuyerController::class, 'showBeli'])->name('showBeli');
-Route::post('/beli', [BuyerController::class, 'beli'])->name('beli');
+Route::get('/beli/{stock:slug}', [BuyerController::class, 'indexBeli'])->name('showBeli');
+Route::post('/beli/{stock:slug}', [BuyerController::class, 'beli'])->name('beli');
 
 //Route::middleware()->group(function () {
     // TODO : route stock taro sini

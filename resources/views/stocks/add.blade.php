@@ -5,7 +5,7 @@
     <h2 class="text-center fs-5 text-secondary col-10">Data-data ini akan ditampilkan di beranda</h2>
     <form action="{{ route('storeStock') }}" method="post" enctype="multipart/form-data" class="col-lg-8 col-10">
         @csrf
-        <input type="text" name="slug" disabled readonly hidden>
+        <input type="text" name="slug" readonly hidden>
         <div class="input-group input-group mt-2">
             <span class="input-group-text" id="q">Nama</span>
             <input name="nama" type="text" class="form-control @error('nama')
