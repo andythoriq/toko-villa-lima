@@ -19,7 +19,7 @@
                 <span class="fs-4">Jumlah</span>
                 <input name="jumlah" type="number" class="form-control-lg form-control @error('jumlah')
                     is-invalid
-                @enderror" id="w" value="{{ old('jumlah') }}">
+                @enderror" id="w" value="{{ old('jumlah') }}" autofocus>
                 @error('jumlah')
                     <div class="invalid-feedback">
                         {{ $message }}

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Buyer;
+use App\Models\Human;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -12,9 +12,9 @@ class Product extends Model
 
     public $fillable = ['nama', 'jumlah', 'slug'];
 
-    public function buyers()
+    public function humans()
     {
-        return $this->belongsToMany(Buyer::class);
+        return $this->belongsToMany(Human::class);
     }
 
 }
