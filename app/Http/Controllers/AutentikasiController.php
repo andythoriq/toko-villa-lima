@@ -9,7 +9,11 @@ use Illuminate\Support\Facades\Hash;
 class AutentikasiController extends Controller
 {
     public function register(){
-        return view('halaman.register');
+        return view('halaman.register', [
+            'title' => 'Register',
+            'description' => 'daftarkan dirimu sekarang!',
+            'activate' => 'Register'
+        ]);
     }
 
     public function createRegister(Request $request)

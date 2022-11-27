@@ -28,7 +28,7 @@
     @else
         <div class="row">
             @foreach ($stocks as $stock)
-            @include('components.card')
+                @include('components.card')
             @endforeach
         </div>
     @endif

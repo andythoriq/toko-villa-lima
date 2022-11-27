@@ -34,18 +34,19 @@
     main table{
         text-decoration: none;
     }
-    main h1, .card h2, .contoh-tampilan-di-beranda{
+    main h1, .card h2, .contoh-tampilan-di-beranda, .link-registrasi{
         font-family: 'sparky_stonesregular';
+        text-decoration: none;
     }
     nav, form, .a-paling-atas-stocks{
         font-family: 'fa-regular-400';
     }
-    .jumbotron h1, .row-beli{
+    .jumbotron h1, .row-beli, .tombol-daftar{
         font-family: 'edoregular';
     }
-    form input, form textarea, .jumbotron p, main h2, select{
+    form input, form textarea, .jumbotron p, main h2, select, .form-register{
         font-family: 'cascadia_coderegular';
     }
-    form .tombol-submit, .tidak-wajib, .invalid-feedback, .card, .form-di-index-stocks a {
+    form .tombol-submit, .tidak-wajib, .invalid-feedback, .card, .form-di-index-stocks a{
         font-family: 'hackregular';
     }

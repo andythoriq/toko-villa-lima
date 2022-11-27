@@ -26,11 +26,11 @@
             </tr>
             <tr>
                 <td>dibuat pada : </td>
-                <td>{{ $stock->created_at }}</td>
+                <td>{{ $stock->created_at }} ({{ $stock->created_at->diffForHumans() }})</td>
             </tr>
             <tr>
                 <td>diubah pada : </td>
-                <td>{{ $stock->updated_at }}</td>
+                <td>{{ $stock->updated_at }}  ({{ $stock->updated_at->diffForHumans() }})</td>
             </tr>
         </table>
     </div>

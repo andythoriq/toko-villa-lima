@@ -10,9 +10,14 @@
                 <a class="nav-link{{ $activate == 'About' ? ' text-light fw-bolder bg-secondary rounded-5' : '' }}" href="{{ route('about') }}">About</a>
                 <a class="nav-link{{ $activate == 'Contact' ? ' text-light fw-bolder bg-secondary rounded-5' : '' }}" href="{{ route('contact') }}">Contact</a>
             </div>
-            <div class=" text-center">
-                <div>Profile</div>
-            </div>
+            <ul class="text-center navbar-nav">
+                @auth
+                <div><a href="">Profile</a></div>
+                @else
+                    <div><a href="{{ route('register') }}" class="link-registrasi fs-3 {{ $activate == 'Register' ? ' text-light fw-bolder bg-secondary p-2 rounded-5' : '' }}"><i class="fa-regular fa-address-card me-1"></i>Daftar</a></div>
+                @endauth
+            </ul>
         </div>
     </div>
 </nav>
+

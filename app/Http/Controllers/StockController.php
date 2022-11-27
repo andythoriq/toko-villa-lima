@@ -49,7 +49,7 @@ class StockController extends Controller
 
     public function show(Stock $stock)
     {
-        $stock = Stock::where('id', $stock->id)->orWhere('slug', $stock->slug)->firstOrFail();
+        $stock = Stock::where('id', $stock->id)->where('slug', $stock->slug)->firstOrFail();
         return view('stocks.show', compact('stock'));
     }
 
@@ -84,7 +84,7 @@ class StockController extends Controller
             }
             $validStocks['gambar'] = $request->file('gambar')->store('product-img');
         }
-        Stock::where('id', $stock->id)->orWhere('slug', $stock->slug)->update($validStocks);
+        Stock::where('id', $stock->id)->where('slug', $stock->slug)->update($validStocks);
         return redirect(route('stocks'))->with('success', "Data telah diubah. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
     }
 
