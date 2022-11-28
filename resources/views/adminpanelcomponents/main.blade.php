@@ -39,7 +39,7 @@
       </div>
     </div>
   </nav>
-
+  @include('components.alert')
   @yield('main')
 
 

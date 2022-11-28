@@ -11,25 +11,31 @@ class AutentikasiController extends Controller
     public function register(){
         return view('halaman.register', [
             'title' => 'Register',
-            'description' => 'daftarkan dirimu sekarang!',
+            'description' => 'Daftarkan dirimu sekarang!',
             'activate' => 'Register'
         ]);
     }
 
     public function createRegister(Request $request)
     {
-        $newUser = $request->validate([
-            'nama' => ['string', 'max:191', 'min:4'],
-            'username' => ['required', 'alpha', 'max:191', 'min:4', 'unique:humans,username'],// wajib
-            'alamat' => ['min:10', 'max:191'],
-            'email' => ['email:dns','unique:humans,email'],
-            'password' => ['max:255','min:6'] // wajib
+        $validUsers = $request->validate([
+            'nama' => ['min:4','max:191', 'nullable'],
+            'username' => ['required', 'alpha', 'min:4', 'max:191', 'unique:humans,username'],// wajib
+            'alamat' => ['min:10', 'max:191', 'nullable'],
+            'email' => ['required','email:dns','unique:humans,email', 'min:4', 'max:191'],
+            'password' => ['required','min:6','max:255'] // wajib
         ]);
-        $human = Human::where('username', $request->username)->first();
-        if($human){
-            return back();
-        }
-        $newUser['password'] = Hash::make($request->password);
-        Human::create($newUser);
+        $validUsers['password'] = Hash::make($request->password);
+        Human::create($validUsers);
+        return redirect(route('login'))->with('register-success', 'anda berhasil daftar!');
+    }
+
+    public function login()
+    {
+        return view('halaman.login',[
+            'title' => 'Login',
+            'description' => 'sudah memiliki akun? login akunmu sekarang!',
+            'activate' => 'Login'
+        ]);
     }
 }

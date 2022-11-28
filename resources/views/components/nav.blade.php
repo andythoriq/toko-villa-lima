@@ -14,7 +14,7 @@
                 @auth
                 <div><a href="">Profile</a></div>
                 @else
-                    <div><a href="{{ route('register') }}" class="link-registrasi fs-3 {{ $activate == 'Register' ? ' text-light fw-bolder bg-secondary p-2 rounded-5' : '' }}"><i class="fa-regular fa-address-card me-1"></i>Daftar</a></div>
+                    <div><a href="{{ route('login') }}" class="link-registrasi fs-3 {{ $activate == 'Login' ? ' text-light fw-bolder bg-secondary p-2 rounded-5' : '' }}"><i class="fa-regular fa-address-card me-1"></i>Login</a></div>
                 @endauth
             </ul>
         </div>

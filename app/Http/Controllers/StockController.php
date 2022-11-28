@@ -28,10 +28,10 @@ class StockController extends Controller
     public function store(Request $request)
     {
         $validStocks = $request->validate([
-            'nama' => ['required', 'max:200', 'unique:stocks,nama', 'string'],
-            'persediaan' => ['required'],
+            'nama' => ['required', 'max:200', 'unique:stocks,nama'],
+            'persediaan' => ['required', 'in:ada,habis'],
             'gambar' => 'image|file|max:1000|nullable|mimes:png,jpg,jpeg,avif,webp',
-            'deskripsi' => 'nullable',
+            'deskripsi' => 'nullable'
         ]);
 
         $validStocks['slug'] = Str::slug($request->nama);
@@ -69,8 +69,8 @@ class StockController extends Controller
         }
 
         $validStocks = $request->validate([
-            'nama' => ['required', 'max:200', cekPerubahanNama($request, $stock), 'string'],
-            'persediaan' => ['required'],
+            'nama' => ['required', 'max:200', cekPerubahanNama($request, $stock)],
+            'persediaan' => ['required', 'in:ada,habis'],
             'gambar' => 'image|file|max:1000|nullable|mimes:png,jpg,jpeg,avif,webp',
             'deskripsi' => 'nullable',
         ]);

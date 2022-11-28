@@ -15,6 +15,8 @@ class Human extends Model
     //     return $this->hasMany(Buyer::class);
     // }
 
+    public $fillable = ['nama', 'username', 'alamat', 'email', 'password'];
+
     public function products()
     {
         return $this->hasMany(Product::class);

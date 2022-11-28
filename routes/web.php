@@ -44,6 +44,8 @@ Route::get('/customers', KelolaCustomer::class)->name('customers');
 // route login register (authentication)
 Route::get('/register', [AutentikasiController::class, 'register'])->name('register');
 Route::post('/register', [AutentikasiController::class, 'createRegister'])->name('crateRegister');
+Route::get('/login', [AutentikasiController::class, 'login'])->name('login');
+Route::post('/login', [AutentikasiController::class, 'createLogin'])->name('createLogin');
 
 // proses pembelian
 Route::get('/beli/{stock:slug}', [BuyerController::class, 'indexBeli'])->name('showBeli');

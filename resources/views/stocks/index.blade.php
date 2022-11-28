@@ -2,7 +2,7 @@
 @section('main')
 <main class="container">
     <a href="{{ route('addStock') }}" class="btn btn-success rounded-0 d-flex p-3 a-paling-atas-stocks"><i class="fa-solid fa-plus pe-1"></i>tambah data baru</a>
-    @include('components.alert')
+
     @if ($stocks->count() <= 0)
         <div class="alert alert-warning rounded-0">stok belum tersedia</div>
     @else
