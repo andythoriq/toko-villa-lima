@@ -19,22 +19,10 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" name="username" class="form-control @error('username')
-                        is-invalid
-                    @enderror" id="b" placeholder="username" value="{{ old('username') }}">
-                    <label for="b">Username</label>
-                    @error('username')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <div class="form-floating mb-3">
                     <input type="text" name="alamat" class="form-control @error('alamat')
                         is-invalid
                     @enderror" id="c" placeholder="alamat" value="{{ old('alamat') }}">
-                    <label for="c">Alamat</label>
+                    <label for="c">Alamat VBI 5 <small class="text-secondary">untuk pengiriman</small></label>
                     @error('alamat')
                         <div class="invalid-feedback">
                             {{ $message }}

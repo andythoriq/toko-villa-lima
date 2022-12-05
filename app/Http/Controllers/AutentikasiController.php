@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Human;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AutentikasiController extends Controller
@@ -18,16 +19,15 @@ class AutentikasiController extends Controller
 
     public function createRegister(Request $request)
     {
-        $validUsers = $request->validate([
-            'nama' => ['min:4','max:191', 'nullable'],
-            'username' => ['required', 'alpha', 'min:4', 'max:191', 'unique:humans,username'],// wajib
-            'alamat' => ['min:10', 'max:191', 'nullable'],
-            'email' => ['required','email:dns','unique:humans,email', 'min:4', 'max:191'],
+        $validUser = $request->validate([
+            'nama' => ['min:2','max:191', 'nullable'],
+            'alamat' => ['min:6', 'max:191', 'nullable'],
+            'email' => ['required','email:dns','unique:users,email', 'min:2', 'max:191'],
             'password' => ['required','min:6','max:255'] // wajib
         ]);
-        $validUsers['password'] = Hash::make($request->password);
-        Human::create($validUsers);
-        return redirect(route('login'))->with('register-success', 'anda berhasil daftar!');
+        $validUser['password'] = Hash::make($request->password);
+        User::create($validUser);
+        return redirect(route('login'))->with('auth-success', 'anda berhasil daftar! saatnya login');
     }
 
     public function login()
@@ -37,5 +37,20 @@ class AutentikasiController extends Controller
             'description' => 'sudah memiliki akun? login akunmu sekarang!',
             'activate' => 'Login'
         ]);
+    }
+
+    public function createLogin(Request $request)
+    {
+        $validUser = $request->validate([
+            'email' => 'required|email:dns',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt($validUser)){
+            $request->session()->regenerate();
+            return redirect()->intended(route('beranda'));
+        }
+
+        return redirect(route('login'))->with('auth-failed', 'anda gagal login');
     }
 }

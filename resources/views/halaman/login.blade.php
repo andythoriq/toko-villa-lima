@@ -7,19 +7,7 @@
             <div class="card-body">
                 @csrf
 
-                <div class="form-floating mb-3">
-                    <input type="text" name="username" class="form-control @error('username')
-                        is-invalid
-                    @enderror" id="b" placeholder="username" value="{{ old('username') }}">
-                    <label for="b">Username</label>
-                    @error('username')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <div class="form-floating mb-3">
+                <div class="form-floating mb-3 mt-3">
                     <input type="email" name="email" class="form-control @error('email')
                         is-invalid
                     @enderror" id="q" placeholder="name@example.com" value="{{ old('email') }}">

@@ -13,11 +13,7 @@ class StockController extends Controller
     public function stocks()
     {
         $stocks = Stock::all();
-        if(!$stocks){
-            return view('stocks.index')->with('info', 'Produk tidak ditemukan!');
-        }else{
             return view('stocks.index', compact('stocks'));
-        }
     }
 
     public function tambah()
@@ -27,22 +23,22 @@ class StockController extends Controller
 
     public function store(Request $request)
     {
-        $validStocks = $request->validate([
+        $validStock = $request->validate([
             'nama' => ['required', 'max:200', 'unique:stocks,nama'],
             'persediaan' => ['required', 'in:ada,habis'],
             'gambar' => 'image|file|max:1000|nullable|mimes:png,jpg,jpeg,avif,webp',
             'deskripsi' => 'nullable'
         ]);
 
-        $validStocks['slug'] = Str::slug($request->nama);
+        $validStock['slug'] = Str::slug($request->nama);
 
         if($request->file('gambar')){
-            $validStocks['gambar'] = $request->file('gambar')->store('product-img');
+            $validStock['gambar'] = $request->file('gambar')->store('product-img');
             // $imgName = $request->gambar->getClientOriginalName() . '-' . time() . '-' .$request->gambar->extension();
             // $request->gambar->move(public_path('image'), $imgName);
         }
 
-        Stock::create($validStocks);
+        Stock::create($validStock);
         return redirect(route('stocks'))->with('success', "Data telah ditambahkan. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
     }
     // TODO :
@@ -68,7 +64,7 @@ class StockController extends Controller
             return 'unique:stocks,nama';
         }
 
-        $validStocks = $request->validate([
+        $validStock = $request->validate([
             'nama' => ['required', 'max:200', cekPerubahanNama($request, $stock)],
             'persediaan' => ['required', 'in:ada,habis'],
             'gambar' => 'image|file|max:1000|nullable|mimes:png,jpg,jpeg,avif,webp',
@@ -76,15 +72,15 @@ class StockController extends Controller
         ]);
 
 
-        $validStocks['slug'] = Str::slug($request->nama);
+        $validStock['slug'] = Str::slug($request->nama);
 
         if($request->file('gambar')){
             if($stock->gambar){
                 Storage::delete($stock->gambar);
             }
-            $validStocks['gambar'] = $request->file('gambar')->store('product-img');
+            $validStock['gambar'] = $request->file('gambar')->store('product-img');
         }
-        Stock::where('id', $stock->id)->where('slug', $stock->slug)->update($validStocks);
+        Stock::where('id', $stock->id)->where('slug', $stock->slug)->update($validStock);
         return redirect(route('stocks'))->with('success', "Data telah diubah. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
     }
 
