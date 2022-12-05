@@ -47,7 +47,7 @@
         </div>
     <hr class="m-4">
         <div class="mb-5 tombol-submit">
-            <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-plus pe-1"></i>Tambah</button>
+            <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-plus"></i> Tambah</button>
         </div>
     </form>
 </main>

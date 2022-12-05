@@ -49,7 +49,7 @@
         </div>
     <hr class="m-4">
         <div class="mb-5 tombol-submit">
-            <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-square-pen pe-2"></i>Update</button>
+            <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-square-pen"></i> Update</button>
         </div>
     </form>
 </main>

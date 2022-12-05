@@ -6,6 +6,7 @@ use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AutentikasiController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,16 @@ use App\Http\Controllers\AutentikasiController;
 Route::get('/', [CustomerController::class, 'beranda'])->name('beranda');
 Route::get('/about', [CustomerController::class, 'about'])->name('about');
 Route::get('/contact', [CustomerController::class, 'contact'])->name('contact');
-Route::get('/cart', [CustomerController::class, 'cart'])->name('cart');
-Route::get('/riwayat-pembelian', [CustomerController::class, 'history'])->name('history');
+
+// pembelian
+Route::middleware('auth')->group(function(){
+    Route::get('/riwayat-pembelian', [CustomerController::class, 'history'])->name('history');
+    Route::get('/cart', [CustomerController::class, 'cart'])->name('cart');
+    Route::get('/beli/{stock:slug}', [BuyerController::class, 'indexBeli'])->name('showBeli');
+    Route::post('/beli/{stock:slug}', [BuyerController::class, 'beli'])->name('beli');
+    Route::get('/user/{user:id}', [UserController::class, 'show'])->name('showUser');
+    Route::post('/logout', [AutentikasiController::class, 'logout'])->name('logout');
+});
 
 // route stock (admin)
 Route::prefix('/stocks')->group(function(){
@@ -37,20 +46,13 @@ Route::prefix('/stocks')->group(function(){
     Route::put('/{stock:slug}/edit', [StockController::class, 'update'])->name('updateStock');
     Route::delete('/{stock:slug}', [StockController::class, 'delete'])->name('deleteStock');
 });
-
 // route pengelola customer (admin)
 Route::get('/customers', KelolaCustomer::class)->name('customers');
 
 // route login register (authentication)
-Route::get('/register', [AutentikasiController::class, 'register'])->name('register');
-Route::post('/register', [AutentikasiController::class, 'createRegister'])->name('crateRegister');
-Route::get('/login', [AutentikasiController::class, 'login'])->name('login');
-Route::post('/login', [AutentikasiController::class, 'createLogin'])->name('createLogin');
-
-// proses pembelian
-Route::get('/beli/{stock:slug}', [BuyerController::class, 'indexBeli'])->name('showBeli');
-Route::post('/beli/{stock:slug}', [BuyerController::class, 'beli'])->name('beli');
-
-//Route::middleware()->group(function () {
-    // TODO : route stock taro sini
-//});
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [AutentikasiController::class, 'register'])->name('register');
+    Route::post('/register', [AutentikasiController::class, 'createRegister'])->name('crateRegister');
+    Route::get('/login', [AutentikasiController::class, 'login'])->name('login');
+    Route::post('/login', [AutentikasiController::class, 'createLogin'])->name('createLogin');
+});

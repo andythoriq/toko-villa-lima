@@ -21,7 +21,7 @@
             }
         }
     ?>
-    <h1>{{ $title ? dapatWaktu() : ''}}</h1>
+    <h1>{{ $title ? dapatWaktu() : ''}} {{ Auth::user()->nama ?? '' }}</h1>
     <hr>
     @if ($stocks->count() <= 0)
         <div class="alert alert-warning">stok belum tersedia</div>

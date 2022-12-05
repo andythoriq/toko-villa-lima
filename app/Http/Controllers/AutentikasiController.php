@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class AutentikasiController extends Controller
 {
@@ -20,7 +21,7 @@ class AutentikasiController extends Controller
     public function createRegister(Request $request)
     {
         $validUser = $request->validate([
-            'nama' => ['min:2','max:191', 'nullable'],
+            'nama' => ['min:3','max:191'],
             'alamat' => ['min:6', 'max:191', 'nullable'],
             'email' => ['required','email:dns','unique:users,email', 'min:2', 'max:191'],
             'password' => ['required','min:6','max:255'] // wajib
@@ -48,9 +49,20 @@ class AutentikasiController extends Controller
 
         if(Auth::attempt($validUser)){
             $request->session()->regenerate();
-            return redirect()->intended(route('beranda'));
+            return redirect()->intended(route('beranda'))->with('auth-success', 'anda berhasil login!');
         }
 
-        return redirect(route('login'))->with('auth-failed', 'anda gagal login');
+        // return redirect(route('login'))->with('auth-failed', 'anda gagal login');
+        throw ValidationException::withMessages([
+            'email' => 'your provide credentials does not match our records',
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }

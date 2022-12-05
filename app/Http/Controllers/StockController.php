@@ -41,7 +41,6 @@ class StockController extends Controller
         Stock::create($validStock);
         return redirect(route('stocks'))->with('success', "Data telah ditambahkan. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
     }
-    // TODO :
 
     public function show(Stock $stock)
     {
