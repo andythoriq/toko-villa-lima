@@ -13,7 +13,7 @@ class StockController extends Controller
     public function stocks()
     {
         $stocks = Stock::all();
-            return view('stocks.index', compact('stocks'));
+        return view('stocks.index', compact('stocks'));
     }
 
     public function tambah()
@@ -29,15 +29,12 @@ class StockController extends Controller
             'gambar' => 'image|file|max:1000|nullable|mimes:png,jpg,jpeg,avif,webp',
             'deskripsi' => 'nullable'
         ]);
-
         $validStock['slug'] = Str::slug($request->nama);
-
         if($request->file('gambar')){
             $validStock['gambar'] = $request->file('gambar')->store('product-img');
             // $imgName = $request->gambar->getClientOriginalName() . '-' . time() . '-' .$request->gambar->extension();
             // $request->gambar->move(public_path('image'), $imgName);
         }
-
         Stock::create($validStock);
         return redirect(route('stocks'))->with('success', "Data telah ditambahkan. Periksa Beranda -> " . "<a href='/'>di sini</a>" );
     }
@@ -55,24 +52,19 @@ class StockController extends Controller
 
     public function update(Request $request, Stock $stock)
     {
-
         function cekPerubahanNama($request, $stock){
             if ($request->nama == $stock->nama) {
                 return '';
             }
             return 'unique:stocks,nama';
         }
-
         $validStock = $request->validate([
             'nama' => ['required', 'max:200', cekPerubahanNama($request, $stock)],
             'persediaan' => ['required', 'in:ada,habis'],
             'gambar' => 'image|file|max:1000|nullable|mimes:png,jpg,jpeg,avif,webp',
             'deskripsi' => 'nullable',
         ]);
-
-
         $validStock['slug'] = Str::slug($request->nama);
-
         if($request->file('gambar')){
             if($stock->gambar){
                 Storage::delete($stock->gambar);

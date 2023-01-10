@@ -6,6 +6,7 @@ use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AutentikasiController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -19,8 +20,6 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// TODO!!  menggunakan bahasa indonesia -> beranda, saran, namaFields, beli
-
 // route utama (customer)
 Route::get('/', [CustomerController::class, 'beranda'])->name('beranda');
 Route::get('/about', [CustomerController::class, 'about'])->name('about');
@@ -32,12 +31,12 @@ Route::middleware('auth')->group(function(){
     Route::get('/cart', [CustomerController::class, 'cart'])->name('cart');
     Route::get('/beli/{stock:slug}', [BuyerController::class, 'indexBeli'])->name('showBeli');
     Route::post('/beli/{stock:slug}', [BuyerController::class, 'beli'])->name('beli');
-    Route::get('/user/{user:id}', [UserController::class, 'show'])->name('showUser');
+    Route::get('/user/{user:email}', [UserController::class, 'show'])->name('showUser');
     Route::post('/logout', [AutentikasiController::class, 'logout'])->name('logout');
 });
 
 // route stock (admin)
-Route::prefix('/stocks')->group(function(){
+Route::middleware('admin')->prefix('/stocks')->group(function(){
     Route::get('/', [StockController::class, 'stocks'])->name('stocks');
     Route::get('/tambah', [StockController::class, 'tambah'])->name('addStock');
     Route::post('/tambah', [StockController::class, 'store'])->name('storeStock');
@@ -46,8 +45,14 @@ Route::prefix('/stocks')->group(function(){
     Route::put('/{stock:slug}/edit', [StockController::class, 'update'])->name('updateStock');
     Route::delete('/{stock:slug}', [StockController::class, 'delete'])->name('deleteStock');
 });
+
 // route pengelola customer (admin)
-Route::get('/customers', KelolaCustomer::class)->name('customers');
+Route::middleware('admin')->get('/customers', KelolaCustomer::class)->name('customers');
+
+// route pengelola pesanan (admin)
+Route::middleware('admin')->prefix('/pesanan')->group(function(){
+    Route::get('/', [PesananController::class, 'index'])->name('pesanan');
+});
 
 // route login register (authentication)
 Route::middleware('guest')->group(function () {

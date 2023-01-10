@@ -10,12 +10,6 @@
     <title>Welcome Admin</title>
 </head>
 <body>
-
-</body>
-</html>
-
-
-
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +35,7 @@
   </nav>
   @include('components.alert')
   @yield('main')
-
-
+</body>
+</html>
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('fontawesome/js/all.js') }}"></script>

@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Stock extends Model
 {
@@ -15,6 +17,9 @@ class Stock extends Model
 
     protected $table = 'stocks';
     protected $fillable = ['nama', 'persediaan', 'deskripsi', 'gambar', 'slug'];
+    public function users() {
+        return $this->belongsToMany(Product::class, 'products');
+    }
     // public function getRouteKeyName()
     // {
     //     return 'slug';

@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Product;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -19,9 +20,8 @@ class User extends Authenticatable
      */
     public $fillable = ['nama', 'alamat', 'email', 'password'];
 
-    public function products()
-    {
-        return $this->hasMany(Product::class, 'pembeli');
+    public function stocks() {
+        return $this->belongsToMany(Product::class, 'products');
     }
 
     /**
@@ -31,7 +31,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        // 'remember_token',
+        'remember_token',
     ];
 
     /**
@@ -39,7 +39,7 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

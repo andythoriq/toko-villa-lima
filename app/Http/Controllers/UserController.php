@@ -12,7 +12,7 @@ class UserController extends Controller
         return view('user.show', [
             'description' => "halaman profile dari $user->nama",
             'title' => $user->nama,
-            'activate' => '',
+            'activate' => 'User',
             'user' => $user
         ]);
     }

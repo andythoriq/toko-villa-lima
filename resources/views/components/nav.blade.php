@@ -9,10 +9,13 @@
                 <li class="nav-item"><a class="nav-link{{ $activate == 'Beranda' ? ' text-light fw-bolder bg-secondary rounded-5' : '' }}" href="{{ route('beranda') }}">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link{{ $activate == 'About' ? ' text-light fw-bolder bg-secondary rounded-5' : '' }}" href="{{ route('about') }}">About</a></li>
                 <li class="nav-item"><a class="nav-link{{ $activate == 'Contact' ? ' text-light fw-bolder bg-secondary rounded-5' : '' }}" href="{{ route('contact') }}">Contact</a></li>
+                @can('admin')
+                    <li class="nav-item"><a class="nav-link" href="{{ route('pesanan') }}">Admin</a></li>
+                @endcan
             </ul>
             @auth
                 <ul class="navbar-nav text-center dropdon">
-                    <li class="nav-item"><a href="{{ route('showUser', Auth::user()->id ?? 0) }}" class="fs-5 nav-link"><i class="fa-regular fa-user"></i> {{ Auth::user()->nama ?? 'tidak ada nama' }}</a></li>
+                    <li class="nav-item"><a href="{{ route('showUser', Auth::user()->email ?? 0) }}" class="fs-5 nav-link {{ $activate == 'User' ? ' text-light fw-bolder bg-secondary rounded-5' : '' }}"><i class="fa-regular fa-user"></i> {{ Auth::user()->nama ?? 'tidak ada nama' }}</a></li>
                 </ul>
             @endauth
             @guest

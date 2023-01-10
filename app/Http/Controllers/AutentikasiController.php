@@ -49,7 +49,8 @@ class AutentikasiController extends Controller
 
         if(Auth::attempt($validUser)){
             $request->session()->regenerate();
-            return redirect()->intended(route('beranda'))->with('auth-success', 'anda berhasil login!');
+            // return redirect()->intended(route('beranda'))->with('auth-success', 'anda berhasil login!');
+            return redirect()->intended(route('beranda'));
         }
 
         // return redirect(route('login'))->with('auth-failed', 'anda gagal login');

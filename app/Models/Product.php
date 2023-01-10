@@ -9,12 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Product extends Model
 {
     use HasFactory;
-
-    public $fillable = ['nama', 'jumlah', 'slug'];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'pembeli');
-    }
-
+    protected $table = 'products';
+    public $fillable = ['jumlah', 'user_id', 'stock_id', 'diBeli'];
 }

@@ -2,18 +2,10 @@
 @section('main')
     <form action="{{ route('beli', $stock->slug) }}" method="post" class="px-4">
         @csrf
-        <input type="text" name="slug" value="{{ $stock->slug }}" readonly hidden>
         <div class="row row-beli">
             <div class="col-lg-5 col-12 mb-3">
                 <span class="fs-4">Produk</span>
-                <input name="nama" type="text" class="form-control-lg form-control @error('nama')
-                    is-invalid
-                @enderror" id="q" value="{{ $stock->nama }}" readonly>
-                @error('nama')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
+                <input type="text" class="form-control-lg form-control" id="q" value="{{ $stock->nama }}" readonly>
             </div>
             <div class="col-lg-5 col-12 mb-3">
                 <span class="fs-4">Jumlah</span>
